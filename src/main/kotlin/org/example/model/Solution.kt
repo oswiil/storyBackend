@@ -1,21 +1,13 @@
 package org.example.model
 
-
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "level")
-data class Level(
+@Table(name = "solution")
+data class Solution(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-
-    @Column(name = "story_id", insertable = false, updatable = false)
-    var storyId: Long,
-
-    @ManyToOne
-    @JoinColumn(name = "story_id")
-    var story: Story,
 
     @Column(name = "chapter_id", insertable = false, updatable = false)
     var chapterId: Long,
@@ -24,8 +16,10 @@ data class Level(
     @JoinColumn(name = "chapter_id")
     var chapter: Chapter,
 
-    @OneToMany(mappedBy = "level")
-    var assets: MutableList<Asset> = mutableListOf(),
+    @Column(name = "solution_type_id", insertable = false, updatable = false)
+    var solutionTypeId: Long,
 
-
+    @ManyToOne
+    @JoinColumn(name = "solution_type_id")
+    var solutionType: SolutionType
 )

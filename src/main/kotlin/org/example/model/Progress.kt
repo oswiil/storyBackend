@@ -3,6 +3,7 @@ package org.example.model
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "progress")
 data class Progress(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,

@@ -1,3 +1,22 @@
+DROP TABLE IF EXISTS
+    Script,
+    Translation,
+    Asset,
+    AssetType,
+    Coordinates,
+    Solution,
+    SolutionType,
+    Chapter,
+    Level,
+    Progress,
+    Story,
+    UserAccount,
+    Profile,
+    Language
+    CASCADE;
+
+
+
 CREATE TABLE Language (
                           id SERIAL PRIMARY KEY,
                           name VARCHAR
