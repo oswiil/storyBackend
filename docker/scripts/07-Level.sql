@@ -1,0 +1,1 @@
+INSERT INTO Level (story_id, number_chapter) VALUES (1, 1);

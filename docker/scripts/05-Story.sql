@@ -1,0 +1,1 @@
+INSERT INTO Story (name) VALUES ('The Magical Forest');

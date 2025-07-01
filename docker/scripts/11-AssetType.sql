@@ -1,0 +1,1 @@
+INSERT INTO AssetType (type) VALUES ('image'), ('audio');

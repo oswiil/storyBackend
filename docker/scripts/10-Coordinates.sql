@@ -1,0 +1,1 @@
+INSERT INTO Coordinates (x, y, z) VALUES (0.0, 0.0, 0.0);

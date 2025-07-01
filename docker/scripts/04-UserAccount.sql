@@ -1,0 +1,1 @@
+INSERT INTO UserAccount (language_id, profile_id) VALUES (1, 2);

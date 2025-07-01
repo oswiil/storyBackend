@@ -1,0 +1,1 @@
+INSERT INTO Profile (plan) VALUES ('free'), ('premium');

@@ -1,30 +1,32 @@
-DROP TABLE IF EXISTS
-    Script,
-    Translation,
-    Asset,
-    AssetType,
-    Coordinates,
-    Solution,
-    SolutionType,
-    Chapter,
-    Level,
-    Progress,
-    Story,
-    UserAccount,
-    Profile,
-    Language
-    CASCADE;
+--DROP DATABASE IF EXISTS storydb;
+
+--CREATE DATABASE storydb;-- IF NOT EXISTS;
+
+DROP USER IF EXISTS diana;
+CREATE USER diana  WITH encrypted PASSWORD 'd1@n4';
+--GRANT ALL PRIVILEGES ON storydb.* TO diana;
+GRANT ALL PRIVILEGES ON database storydb TO diana;
+
+--CREATE USER myuser  WITH PASSWORD 'password';
+--GRANT ALL PRIVILEGES ON ALL  storydb.* TO `user`;
+GRANT ALL PRIVILEGES ON database storydb TO myuser;
+
+--FLUSH PRIVILEGES;
 
 
+
+
+DROP TABLE IF EXISTS Script, Asset, Translation, AssetType, Coordinates, Solution,
+    SolutionType, Progress, Level, Chapter, Story, UserAccount, Profile, Language CASCADE;
 
 CREATE TABLE Language (
                           id SERIAL PRIMARY KEY,
-                          name VARCHAR
+                          name VARCHAR NOT NULL
 );
 
 CREATE TABLE Profile (
                          id SERIAL PRIMARY KEY,
-                         plan TEXT
+                         plan TEXT NOT NULL
 );
 
 CREATE TABLE UserAccount (
@@ -35,12 +37,12 @@ CREATE TABLE UserAccount (
 
 CREATE TABLE Story (
                        id SERIAL PRIMARY KEY,
-                       name VARCHAR
+                       name VARCHAR NOT NULL
 );
 
 CREATE TABLE Chapter (
                          id SERIAL PRIMARY KEY,
-                         title VARCHAR,
+                         title VARCHAR NOT NULL,
                          solution VARCHAR,
                          story_id INT REFERENCES Story(id),
                          number INT
@@ -61,7 +63,7 @@ CREATE TABLE Progress (
 
 CREATE TABLE SolutionType (
                               id SERIAL PRIMARY KEY,
-                              name VARCHAR
+                              name VARCHAR NOT NULL
 );
 
 CREATE TABLE Solution (
@@ -79,7 +81,7 @@ CREATE TABLE Coordinates (
 
 CREATE TABLE AssetType (
                            id SERIAL PRIMARY KEY,
-                           type VARCHAR
+                           type VARCHAR NOT NULL
 );
 
 CREATE TABLE Asset (
@@ -94,7 +96,7 @@ CREATE TABLE Asset (
 CREATE TABLE Translation (
                              id SERIAL PRIMARY KEY,
                              language_id INT REFERENCES Language(id),
-                             text TEXT
+                             text TEXT NOT NULL
 );
 
 CREATE TABLE Script (

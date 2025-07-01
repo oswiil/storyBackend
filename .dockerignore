@@ -1,0 +1,9 @@
+.gradle
+build
+**/*.iml
+.idea
+*.log
+*.md
+*.env
+Dockerfile
+docker-compose.yml

@@ -1,0 +1,48 @@
+services:
+  database:
+    image: postgres:15
+    container_name: db-postgres
+    restart: unless-stopped
+
+    #env_file: .env
+    environment:
+      POSTGRES_DB: storydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: password
+   # ports:
+    #  - "5432:5432"
+    volumes:
+      - ./docker/scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      - backend
+
+  dbadmin:
+    image: adminer
+    container_name: adminer-postgres
+    restart: unless-stopped
+    ports:
+      - "8000:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: db-postgres
+    networks:
+      - backend
+
+  app:
+    build: .
+    container_name: kotlin-springboot-app
+    restart: unless-stopped
+    depends_on:
+      - database
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-postgres:5432/storydb
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge

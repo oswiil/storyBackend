@@ -8,15 +8,19 @@ INSERT INTO UserAccount (language_id, profile_id) VALUES (1, 2);
 -- Creamos la historia base
 INSERT INTO Story (name) VALUES ('The Magical Forest');
 
+-- Ahora creamos los capítulos
+INSERT INTO chapter (title, solution, story_id, number)
+VALUES
+    ('Choose your path', 'Choose the correct path', 1, 1),
+    ('Collect the items', 'Find all the hidden objects', 1, 2);
+
 -- Creamos los niveles
 INSERT INTO Level (story_id, chapter_id) VALUES (1, 1);
 
 -- Insertamos el progreso
 INSERT INTO Progress (user_id, story_id, level_id) VALUES (1, 1, 1);
 
-SELECT *
-FROM Level
-ORDER BY id;
+
 -- Insertamos tipos de solución
 INSERT INTO SolutionType (name) VALUES
                                     ('unique_solution'),
@@ -30,11 +34,6 @@ INSERT INTO SolutionType (name) VALUES
                                     ('write_word'),
                                     ('speak_word');
 
--- Ahora creamos los capítulos
-INSERT INTO chapter (title, solution, story_id, number)
-VALUES
-    ('Choose your path', 'Choose the correct path', 1, 1),
-    ('Collect the items', 'Find all the hidden objects', 1, 2);
 
 -- Finalmente insertamos las soluciones
 INSERT INTO Solution (chapter_id, solution_type_id) VALUES

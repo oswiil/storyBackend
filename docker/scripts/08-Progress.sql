@@ -1,0 +1,1 @@
+INSERT INTO Progress (user_id, story_id, level_id) VALUES (1, 1, 1);
